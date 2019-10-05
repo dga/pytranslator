@@ -7,9 +7,11 @@ from translate import Translator
 
 
 def is_language_code(language):
-    ''' Scrape language codes from https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-        and return the one that matches the @language
     '''
+    Check language argument against list of language codes scraped from 
+    https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes; e.g., es, en, de, etc.
+    '''
+
     URL = 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'
     r = requests.get(URL)
 
@@ -23,6 +25,7 @@ def is_language_code(language):
 
 
 def main():
+    print(is_language_code)
     # make sure correct command-line arguments were supplied
     try:
         in_filename = sys.argv[1]
