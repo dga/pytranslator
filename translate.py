@@ -25,7 +25,6 @@ def is_language_code(language):
 
 
 def main():
-    print(is_language_code)
     # make sure correct command-line arguments were supplied
     try:
         in_filename = sys.argv[1]
