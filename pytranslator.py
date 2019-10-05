@@ -3,7 +3,7 @@
 import sys
 import requests
 from bs4 import BeautifulSoup
-from translate import Translator
+from googletrans import Translator
 
 
 def is_language_code(language):
@@ -39,19 +39,18 @@ def main():
         print(f'{e}\nUsage: {sys.argv[0]} [filename] [language code]')
         sys.exit()
 
-    translator = Translator(to_lang=language)
-
     # read in file and output translated file;
     # e.g., in: stuff.txt  ->  out: stuff-translated-es.txt
     try:
+        translator = Translator()
+
         with open(in_filename) as in_file:
             text = in_file.read()
-            translation = translator.translate(text)
-
+            translation = translator.translate(text, dest=language)
             out_filename = f"{in_filename.split('.')[0]}-translated-{language}.txt"
 
             with open(out_filename, mode='w') as out_file:
-                out_file.write(translation + '\n')
+                out_file.write(str(translation) + '\n')
     except (FileNotFoundError, IOError) as e:
         print(e)
 
