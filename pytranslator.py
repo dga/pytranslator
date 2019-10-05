@@ -46,11 +46,11 @@ def main():
 
         with open(in_filename) as in_file:
             text = in_file.read()
-            translation = translator.translate(text, dest=language)
+            translation = translator.translate(text, dest=language).text
             out_filename = f"{in_filename.split('.')[0]}-translated-{language}.txt"
 
             with open(out_filename, mode='w') as out_file:
-                out_file.write(str(translation) + '\n')
+                out_file.write(translation + '\n')
     except (FileNotFoundError, IOError) as e:
         print(e)
 
